@@ -14,4 +14,5 @@ WORKDIR /app
 COPY dab-config-is360.json .
 
 # Start DAB using the config
-CMD ["dab", "start", "--config", "dab-config-is360.json"]
+CMD /bin/sh -c "dab start --config dab-config-is360.json"
+
