@@ -1,0 +1,200 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.2.14/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "mssql",
+    "connection-string": "@DB_CONN_STRING",
+    "options": {
+      "set-session-context": false
+    }
+  },
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api",
+      "request-body-strict": true
+    },
+    "graphql": {
+      "enabled": true,
+      "path": "/graphql",
+      "allow-introspection": true
+    },
+    "host": {
+      "cors": {
+        "origins": [
+          "http://10.21.1.135:5000"
+        ],
+        "allow-credentials": false
+      },
+      "authentication": {
+        "provider": "StaticWebApps"
+      },
+      "mode": "development",
+      "server": {
+        "url": "http://10.21.1.135:5010"
+      }
+    }
+  },
+  "entities": {
+    "Resource_Project_Time": {
+      "source": {
+        "object": "bst.Epicor_Resource_Project_Time",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Epicor_Resource_Project_Time",
+          "plural": "Epicor_Resources_Projects_Times"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            { "action": "read" },
+            { "action": "update" },
+            { "action": "create" }
+          ]
+        }
+      ],
+      "primaryKey": {
+        "columns": ["Resource_Project_Unique_ID"]
+      }
+    },
+    "BST_Outstanding_Invoices": {
+      "source": {
+        "object": "bst.BST_Outstanding_Invoices",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "BST_Outstanding_Invoice",
+          "plural": "BST_Outstanding_Invoices"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [{ "action": "read" }]
+        }
+      ],
+      "primaryKey": { "columns": ["Record_ID"] }
+    },
+    "BST_Receipt": {
+      "source": {
+        "object": "bst.BST_Receipt",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "BST_Receipt",
+          "plural": "BST_Receipts"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [{ "action": "read" }]
+        }
+      ],
+      "primaryKey": { "columns": ["Record_ID"] }
+    },
+    "BST_INVOICE": {
+      "source": {
+        "object": "bst.BST_INV_Perc_TD",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "BST_INV_Perc_TD",
+          "plural": "BST_INV_Perc_TDs"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [{ "action": "read" }]
+        }
+      ],
+      "primaryKey": { "columns": ["Record_ID"] }
+    },
+    "BST_ANTICIPATED_RECEIPT_DATE": {
+      "source": {
+        "object": "bst.Anticipated_Receipt_Date",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Anticipated_Receipt_Date",
+          "plural": "Anticipated_Receipt_Dates"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            { "action": "read" },
+            { "action": "update" },
+            { "action": "create" }
+          ]
+        }
+      ],
+      "primaryKey": { "columns": ["Record_ID"] }
+    },
+    "Project_Subs": {
+      "source": {
+        "object": "bst.Project_Subs",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Project_Sub",
+          "plural": "Project_Subs"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [{ "action": "read" }]
+        }
+      ],
+      "primaryKey": { "columns": ["Record_ID"] }
+    },
+    "Projects": {
+      "source": {
+        "object": "bst.BST_Projects",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "BST_Project",
+          "plural": "BST_Projects"
+        }
+      },
+      "rest": { "enabled": true },
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            { "action": "read" },
+            { "action": "update" },
+            { "action": "create" }
+          ]
+        }
+      ],
+      "primaryKey": { "columns": ["ProjectNumber"] }
+    }
+  }
+}
