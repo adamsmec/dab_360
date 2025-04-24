@@ -6,6 +6,7 @@ ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 
 WORKDIR /app
 COPY dab-config-is360.json .
+COPY start.sh .
+RUN chmod +x start.sh
 
-# Let shell resolve the env variable at runtime
-CMD ["/bin/sh", "-c", "dab start --config dab-config-is360.json"]
+CMD ["./start.sh"]
